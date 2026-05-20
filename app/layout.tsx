@@ -33,17 +33,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="h-full flex flex-col bg-zinc-950 text-white font-sans">
-        <header className="flex items-center justify-between px-10 py-5 border-b border-zinc-800/60">
+      <body className="min-h-screen flex flex-col bg-zinc-950 text-white font-sans">
+        <header className="flex items-center justify-between px-6 sm:px-10 py-5 border-b border-zinc-800/60">
           <Link
             href="/"
             className="text-sm font-bold tracking-widest uppercase text-zinc-100 hover:text-emerald-400 transition-colors duration-200"
           >
             JL
           </Link>
-          <nav className="flex items-center gap-8">
+          <nav className="flex items-center gap-5 sm:gap-8">
             {navLinks.map(({ label, href }) => (
               <Link
                 key={href}
@@ -55,7 +55,7 @@ export default function RootLayout({
             ))}
           </nav>
         </header>
-        <main className="flex-1 flex flex-col overflow-hidden">
+        <main className="flex-1 flex flex-col">
           {children}
         </main>
       </body>
