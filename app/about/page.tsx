@@ -23,15 +23,15 @@ export default function About() {
     ]
 
     return (
-        <div className="flex flex-col justify-center items-center">
-            <div className="absolute top-3/5 left-1/2 -translate-x-1/2 -translate-y-1/2 w-172 h-52 bg-emerald-500/10 rounded-full blur-2xl" />
-            <div className="my-5 flex-0 text-center w-2/3 space-y-4">
+        <div className="flex flex-col justify-center items-center px-4">
+            <div className="absolute top-3/5 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-172 h-52 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="my-5 flex-0 text-center w-full md:w-2/3 space-y-4">
                 <h1 className="text-2xl font-bold">Backend Specialized Web Developer</h1>
                 <p className="text-zinc-400 leading-relaxed">I build full-stack web applications using Laravel, Vue, and Inertia. My approach is straightforward: I write clean, highly testable code to deliver smooth user experiences backed by reliable backend architecture.</p>
             </div>
-            <div className="grid grid-cols-3 gap-4 overflow-hidden flex-1 w-[80%]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-hidden flex-1 w-full md:w-[80%]">
                 {skills.map((skill) => (
-                    <div key={skill.title} className="flex flex-col py-10 items-center gap-3 border h-full text-center bg-zinc-900 border-zinc-600 rounded-lg px-8">
+                    <div key={skill.title} className="flex flex-col py-8 items-center gap-3 border h-full text-center bg-zinc-900 border-zinc-600 rounded-lg px-6">
                         <div className="rounded-full flex items-center justify-center size-16 bg-emerald-600">
                             {skill.icon}
                         </div>
@@ -41,7 +41,7 @@ export default function About() {
                             <p className="text-zinc-400">{skill.description}</p>
                         </div>
 
-                        <div className="px-12">
+                        <div className="px-4 md:px-8">
                             <h3 className="text-emerald-500 text-lg">Tools:</h3>
                             <p className="text-sm text-zinc-300">{skill.tools.join(", ")}</p>
                         </div>

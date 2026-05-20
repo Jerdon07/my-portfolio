@@ -15,28 +15,27 @@ export default function Projects() {
     ]
 
     return (
-        <div className="flex flex-col justify-center items-center">
-            <div className="my-5 flex-0 text-center w-2/3 space-y-4">
+        <div className="flex flex-col justify-center items-center px-4">
+            <div className="my-5 flex-0 text-center w-full md:w-2/3 space-y-4">
                 <div className="text-2xl font-bold">My Works</div>
                 <p className="text-zinc-400 leading-relaxed">A collection of projects I've worked on.</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 overflow-hidden flex-1 w-[80%]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden flex-1 w-full md:w-[80%]">
                 {projects.map((project) => (
                     <div key={project.title} className="flex flex-col bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
                         <div className="relative h-40 overflow-hidden bg-zinc-900">
-                            <Image src={ project.image } alt={ project.title } fill unoptimized />
+                            <Image src={project.image} alt={project.title} fill unoptimized />
                         </div>
 
                         <div className="relative p-4">
-                            <h3 className="text-lg font-semibold">{ project.title }</h3>
-                            <p className="text-sm text-zinc-400">{ project.description }</p>
-                            
-                            <div className="flex justify-end gap-3">
-                                <a href={project.link} target="_blank">
-                                    <Globe size={26}/>
-                                </a>
+                            <h3 className="text-lg font-semibold">{project.title}</h3>
+                            <p className="text-sm text-zinc-400">{project.description}</p>
 
+                            <div className="flex justify-end gap-3 mt-3">
+                                <a href={project.link} target="_blank">
+                                    <Globe size={26} />
+                                </a>
                                 <a href={project.repository} target="_blank">
                                     <i className={`${project.icon} text-2xl`}></i>
                                 </a>
