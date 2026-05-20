@@ -1,4 +1,5 @@
 import { Globe } from "lucide-react"
+import Image from "next/image"
 
 export default function Projects() {
     const projects = [
@@ -22,9 +23,9 @@ export default function Projects() {
 
             <div className="grid grid-cols-3 gap-6 overflow-hidden flex-1 w-[80%]">
                 {projects.map((project) => (
-                    <div key={project.title} className="flex flex-col bg-zinc-900 items-center border border-zinc-800 rounded-xl overflow-hidden">
-                        <div className="relative overflow-hidden bg-zinc-900">
-                            <img src={ project.image } alt={ project.title } className="w-full h-full object-contain" />
+                    <div key={project.title} className="flex flex-col bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
+                        <div className="relative h-40 overflow-hidden bg-zinc-900">
+                            <Image src={ project.image } alt={ project.title } fill unoptimized />
                         </div>
 
                         <div className="relative p-4">
