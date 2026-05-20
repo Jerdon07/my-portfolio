@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import 'devicon/devicon.min.css';
+import "devicon/devicon.min.css";
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   description: "Personal Portfolio of Jerdon Litaoen",
 };
 
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,19 +35,29 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-zinc-950 font-sans dark:bg-black">
-        <nav className="h-12 flex items-center px-8 bg-emerald-600 font-semibold">
-          <Link href={'/'} className="h-full flex items-center px-2 hover:bg-emerald-700">
-            Home
+      <body className="h-full flex flex-col bg-zinc-950 text-white font-sans">
+        <header className="flex items-center justify-between px-10 py-5 border-b border-zinc-800/60">
+          <Link
+            href="/"
+            className="text-sm font-bold tracking-widest uppercase text-zinc-100 hover:text-emerald-400 transition-colors duration-200"
+          >
+            JL
           </Link>
-          <Link href={'/about'} className="h-full flex items-center px-2 hover:bg-emerald-700">
-            About
-          </Link>
-          <Link href={'/projects'} className="h-full flex items-center px-2 hover:bg-emerald-700">
-            Projects
-          </Link>
-        </nav>
-        {children}
+          <nav className="flex items-center gap-8">
+            {navLinks.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm text-zinc-400 hover:text-emerald-400 transition-colors duration-200 tracking-wide"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </header>
+        <main className="flex-1 flex flex-col overflow-hidden">
+          {children}
+        </main>
       </body>
     </html>
   );
