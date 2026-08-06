@@ -6,6 +6,7 @@ export const projects = [
         title: 'Hrvst',
         subtitle: 'Connecting Farmers & Dealers through a Real-Time Aggricultural Marketplace.',
         description: 'A specialized agriculture logistics and marketplace platform designed to streamline crop trading within the Cordillera region. Built to replace volatile, word-of-mouth scheduling, the platform synchronizes trading activities at the La Trinidad Vegetable Trading Post. By providing a symmetrical, single-parent posting system, Hrvst allows both farmers to broadcast upcoming supply and dealers to log current demand, stabilizing local supply chains through data-driven transparency.',
+        badge: 'Capstone Project',
         year: 2026,
         thumbnail: '/hrvst.PNG',
         stack: [
@@ -44,7 +45,7 @@ export const projects = [
         mission: 'To empower the Cordillera agricultural community by replacing unpredictable trading habits with predictive, rolling lifecycle data—ensuring fair market visibility for farmers and reliable sourcing for dealers.',
         role: ['Solo Developer'],
         timeline: ['6 Months Capstone Project'],
-        link: 'https://hrvst.free.laravel.cloud',
+        link: 'https://hrvst.laravel.cloud',
         github: 'https://github.com/Cresco-Team/Hrvst-v2',
         features: [
             {
@@ -96,5 +97,78 @@ export const projects = [
             }
         ],
 
+    },
+
+    {
+        id: 2,
+        title: 'ZircuVia',
+        subtitle: 'Circular Tourism Platform for Puerto Princesa City, Palawan, Philippines.',
+        description: "Discover sustainable businesses, track your environmental fee payments, and join exciting events and activities, while making a better environmentally conscious choice along the way.",
+        badge: 'Internship Project',
+        year: 2026,
+        thumbnail: '/zircuvia.png',
+        stack: [
+            {
+                name: 'Next JS',
+                color: 'bg-gray-500/50 text-gray-500',
+            }, {
+                name: 'React JS',
+                color: 'bg-blue-500/50 text-blue-500',
+            }, {
+                name: 'MUI',
+                color: 'bg-blue-500/50 text-blue-500',
+            }, {
+                name: 'Leaflet',
+                color: 'bg-lime-500/50 text-lime-500',
+            }, {
+                name: 'Tailwind',
+                color: 'bg-sky-500/50 text-sky-500',
+            }
+        ],
+        mission: "We connect you with businesses practicing sustainable and eco-friendly practices, help you track your environmental payments, and reward you for making choices that benefit our planet. Together, we're building a community committed to zero-waste living and environmental responsibility.",
+        role: ['Quality Assurance Intern'],
+        timeline: ['3 Months Internship Project'],
+        link: 'https://mobile.zircuvia.com',
+        features: [
+            {
+                title: 'Discover Eco-Businesses',
+                description: 'Explore a categorized list of options: Hotels, Restaurants, Tours, Artisans, and Events, all at your fingertips. Enjoy peace of mind with our eco-friendly markers, certified by local authorities. Easily access contact information, locations, and reviews to enhance your travel experience.',
+                icon: Map
+            }, {
+                title: 'Locate Your Next Destination',
+                description: "Experience the ease of our tourist app's embedded map view! Users can quickly locate partner businesses on the map, simplifying navigation. With a link to Google Maps for detailed directions, exploring is a cinch. Plus, our app works offline for basic browsing, so you can access essential info anytime, anywhere.",
+                icon: MapPinned
+            }, {
+                title: 'Events & Promotions',
+                description: 'Zircuvia shows events and promotions to keep you updated on the exciting activities and deals that enhance your travel experience. This helps you plan your itinerary effectively and encourages you to explore local attractions, making your visits even more memorable.',
+                icon: CalendarClock
+            }, {
+                title: 'Cashless Environmental Fee Payments',
+                description: 'Zircuvia allows cashless payments for environmental fees, simplifying the collection process for the city and improving user experience. Tourists can pay fees easily, making their visit smoother and encouraging more users to adopt the app, benefiting both the city and visitors.',
+                icon: Banknote
+            }
+        ],
+        results: [
+            {
+                title: 'Improved QA Processes',
+                description: 'Implemented structured QA processes, including test case creation, bug tracking, and regression testing, leading to a 30% reduction in post-release defects.',
+                icon: Zap
+            }, {
+                title: 'Enhanced User Experience',
+                description: 'Collaborated with the development team to identify and resolve usability issues, resulting in a 25% increase in user satisfaction scores based on post-release surveys.',
+                icon: HeartHandshake
+            }
+        ],
+        takeaways: [
+            {
+                title: 'Quality Assurance is a Team Effort',
+                description: 'Collaborating with developers, designers, and stakeholders is crucial for effective QA. Clear communication and shared understanding of project goals ensure that testing aligns with user expectations and business objectives.',
+                icon: HeartHandshake
+            }, {
+                title: 'Automation Enhances Efficiency',
+                description: 'Implementing automated testing tools and scripts can significantly reduce manual testing time, allowing the QA team to focus on more complex scenarios and edge cases, ultimately improving overall product quality.',
+                icon: Zap
+            }
+        ]
     }
 ]
