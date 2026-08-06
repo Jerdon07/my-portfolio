@@ -44,11 +44,13 @@ export default async function Show({ params }: PageProps) {
                                 )) }</div>
                             </CardDescription>
 
-                            <CardAction>
-                                <Link href={project!.github} target="_blank">
-                                    <i className="devicon-github-original white text-2xl" />
-                                </Link>
-                            </CardAction>
+                            {project?.github && (
+                                <CardAction>
+                                    <Link href={project!.github} target="_blank">
+                                        <i className="devicon-github-original white text-2xl" />
+                                    </Link>
+                                </CardAction>
+                            )}
                         </CardHeader>
 
                         <CardContent className="space-y-4">
