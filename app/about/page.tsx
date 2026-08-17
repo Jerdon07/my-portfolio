@@ -1,13 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { sections } from "@/lib/about-me-sections"
-import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ILife } from "@/lib/my-life"
 import { ITimeline } from "@/lib/timelines"
 import { ISkill } from "@/lib/tech-stacks"
-import { Item, ItemContent, ItemDescription, ItemHeader, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import useActiveSection from "@/src/hooks/use-active-section"
 
 export default function About() {
@@ -78,7 +77,7 @@ export default function About() {
                                         <ol className="relative my-6 border-l border-gray-700 ml-4 sm:ml-8 space-y-12">
                                             {section.content.map((timeline: ITimeline) => (
                                                 <li key={timeline.id} className="relative pl-8 sm:pl-12 scroll-mt-24">
-                                                    <div className="absolute -left-[42px] top-0 flex h-10 w-20 items-center justify-center rounded-full bg-gray-900 border border-gray-700 text-sm">
+                                                    <div className="absolute -left-10.5 top-0 flex h-10 w-20 items-center justify-center rounded-full bg-gray-900 border border-gray-700 text-sm">
                                                         {timeline.year}
                                                     </div>
 
