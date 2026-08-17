@@ -8,49 +8,18 @@ import { ILife } from "@/lib/my-life"
 import { ITimeline } from "@/lib/timelines"
 import { ISkill } from "@/lib/tech-stacks"
 import { Item, ItemContent, ItemDescription, ItemHeader, ItemMedia, ItemTitle } from "@/components/ui/item"
+import useActiveSection from "@/src/hooks/use-active-section"
 
 export default function About() {
-    const [activeId, setActiveId] = useState<string>('Get to Know Me')
-    const itemRefs = useRef<{ [key: string]: HTMLElement | null }>({})
     const mobileNavRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -60% 0px',
-            threshold: 0,
-        }
-
-        const observerCallback = (entries: IntersectionObserverEntry[]) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveId(entry.target.id)
-                }
-            })
-        }
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-        sections.forEach((item) => {
-            const element = itemRefs.current[item.title]
-            if (element) observer.observe(element)
-        })
-
-        return () => observer.disconnect()
-    }, [])
+    const {activeId, itemRefs, scrollToSection} = useActiveSection(sections)
 
     useEffect(() => {
         if (!mobileNavRef.current) return
         const activeBtn = mobileNavRef.current.querySelector<HTMLElement>('[data-active="true"]')
         activeBtn?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
     }, [activeId])
-
-    const scrollToSection = (id: string) => {
-        const element = itemRefs.current[id]
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
-    }
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-12">
