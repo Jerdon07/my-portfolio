@@ -25,12 +25,6 @@ export const metadata: Metadata = {
   description: "Personal Portfolio of Jerdon Litaoen",
 };
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{
