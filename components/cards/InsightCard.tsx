@@ -8,7 +8,7 @@ interface InsightCardProps {
     }
 }
 
-export default async function InsightCard({ data }: InsightCardProps) {
+export default function InsightCard({ data }: InsightCardProps) {
     const { title, description, icon: IconComponent } = data
 
     return (
