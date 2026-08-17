@@ -7,6 +7,7 @@ import { projects } from "@/lib/projects"
 import { Award, Key, Sparkles, Target, TextAlignStart, Type } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
 interface PageProps {
     params: Promise<{
@@ -21,7 +22,8 @@ export default async function Show({ params }: PageProps) {
         p => p.id === Number(id)
     )
 
-    console.log(project?.id)
+    if (!project) notFound()
+
     return (
         <div className="md:mx-12 my-4 font-semibold space-y-6 cursor-default">
             <div className="grid md:grid-cols-3 gap-10">
@@ -29,24 +31,24 @@ export default async function Show({ params }: PageProps) {
                 {/* Left */}
                 <div className="col-span-1">
                     <Card className="pt-0">
-                        <Link href={project!.link} target="_blank" className="relative aspect-video overflow-hidden">
-                            <Image src={project!.thumbnail} alt={project!.title} fill className="grayscale-50 brightness-75 hover:brightness-100 hover:grayscale-0 transition hover:scale-115 ease-in-out duration-800"/>
+                        <Link href={project.link} target="_blank" className="relative aspect-video overflow-hidden">
+                            <Image src={project.thumbnail} alt={project.title} fill className="grayscale-50 brightness-75 hover:brightness-100 hover:grayscale-0 transition hover:scale-115 ease-in-out duration-800"/>
                         </Link>
 
                         <CardHeader>
                             <CardTitle>
-                                { project?.title }
+                                { project.title }
                             </CardTitle>
 
                             <CardDescription>
-                            <div className="space-x-2">{ project?.stack.map((stack) => (
+                            <div className="space-x-2">{ project.stack.map((stack) => (
                                     <Badge key={stack.name} className={`${stack.color}} text-foreground px-1`}>{ stack.name }</Badge>
                                 )) }</div>
                             </CardDescription>
 
-                            {project?.github && (
+                            {project.github && (
                                 <CardAction>
-                                    <Link href={project!.github} target="_blank">
+                                    <Link href={project.github} target="_blank">
                                         <i className="devicon-github-original white text-2xl" />
                                     </Link>
                                 </CardAction>
@@ -58,20 +60,20 @@ export default async function Show({ params }: PageProps) {
 
                             <div>
                                 <span className="text-xs italic">Role:</span>
-                                <p>{ project?.role }</p>
+                                <p>{ project.role }</p>
                             </div>
 
                             <div className="flex space-x-4">
                                 <div>
                                     <span className="text-xs italic">Year:</span>
-                                    <p>{ project?.year }</p>
+                                    <p>{ project.year }</p>
                                 </div>
 
                                 <Separator orientation="vertical" />
 
                                 <div>
                                     <span className="text-xs italic">Timeline:</span>
-                                    <p>{ project?.timeline }</p>
+                                    <p>{ project.timeline }</p>
                                 </div>
                             </div>
                         </CardContent>
@@ -85,21 +87,21 @@ export default async function Show({ params }: PageProps) {
                         {/* Subtitle */}
                         <div className="hover:text-foreground duration-500 cursor-default">
                             <span className="text-xs flex items-center"><Type size={15} className="mr-1" />Subtitle</span>
-                            <h3 className="md:text-xl">{ project?.subtitle }</h3>
+                            <h3 className="md:text-xl">{ project.subtitle }</h3>
                         </div>
 
                         <Separator />
 
                         <div className="hover:text-foreground duration-500 cursor-default">
                             <span className="text-xs flex items-center"><TextAlignStart size={15} className="mr-1" />Description</span>
-                            <h5 className="text-xs md:text-sm">{ project?.description }</h5>
+                            <h5 className="text-xs md:text-sm">{ project.description }</h5>
                         </div>
 
                         <Separator />
 
                         <div className="hover:text-foreground duration-500 cursor-default">
                             <span className="text-xs flex items-center"><Target size={15} className="mr-1" />Mission:</span>
-                            <p className="text-sm md:text-base">{ project?.mission }</p>
+                            <p className="text-sm md:text-base">{ project.mission }</p>
                         </div>
 
                         <Separator />
@@ -112,7 +114,7 @@ export default async function Show({ params }: PageProps) {
                             </h5>
 
                             <div className="grid md:grid-cols-2 gap-2">
-                                { project?.features.map((feat) => (
+                                { project.features.map((feat) => (
                                     <InsightCard key={feat.title} data={feat} />
                                 ))}
                             </div>
@@ -128,7 +130,7 @@ export default async function Show({ params }: PageProps) {
                             </h5>
 
                             <div className="grid md:grid-cols-2 gap-2">
-                                { project?.results.map((result) => (
+                                { project.results.map((result) => (
                                     <InsightCard key={result.title} data={result} />
                                 ))}
                             </div>
@@ -144,7 +146,7 @@ export default async function Show({ params }: PageProps) {
                             </h5>
 
                             <div className="grid md:grid-cols-2 gap-2">
-                                { project?.takeaways.map((takeaway) => (
+                                { project.takeaways.map((takeaway) => (
                                     <InsightCard key={takeaway.title} data={takeaway} />
                                 ))}
                             </div>
