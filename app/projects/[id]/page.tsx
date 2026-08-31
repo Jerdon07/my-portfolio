@@ -31,7 +31,7 @@ export default async function Show({ params }: PageProps) {
                 {/* Left */}
                 <div className="col-span-1">
                     <Card className="pt-0">
-                        <Link href={project.link} target="_blank" className="relative aspect-video overflow-hidden">
+                        <Link href={project.link ?? project.github ?? '#'} target="_blank" className="relative aspect-video overflow-hidden">
                             <Image src={project.thumbnail} alt={project.title} fill className="grayscale-50 brightness-75 hover:brightness-100 hover:grayscale-0 transition hover:scale-115 ease-in-out duration-800"/>
                         </Link>
 
@@ -120,37 +120,41 @@ export default async function Show({ params }: PageProps) {
                             </div>
                         </div>
 
-                        <Separator />
+                        {project.results && (
+                            <>
+                                <Separator />
+                                <div className="text-center space-y-2 hover:text-foreground duration-500 cursor-default">
+                                    <h5 className="text-sm md:text-2xl flex items-center md:justify-center">
+                                        <Award className="mr-1 size-4 md:size-6" />
+                                        Results
+                                    </h5>
 
-                        {/* Results */}
-                        <div className="text-center space-y-2 hover:text-foreground duration-500 cursor-default">
-                            <h5 className="text-sm md:text-2xl flex items-center md:justify-center">
-                                <Award className="mr-1 size-4 md:size-6" />
-                                Results
-                            </h5>
+                                    <div className="grid md:grid-cols-2 gap-2">
+                                        { project.results?.map((result) => (
+                                            <InsightCard key={result.title} data={result} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
+                        )}
 
-                            <div className="grid md:grid-cols-2 gap-2">
-                                { project.results.map((result) => (
-                                    <InsightCard key={result.title} data={result} />
-                                ))}
-                            </div>
-                        </div>
+                        {project.takeaways && (
+                            <>
+                                <Separator />
+                                <div className="text-center space-y-2 hover:text-foreground duration-500 cursor-default">
+                                    <h5 className="text-sm md:text-2xl flex items-center md:justify-center">
+                                        <Key className="mr-1 size-4 md:size-6" />
+                                        Key Takeaways
+                                    </h5>
 
-                        <Separator />
-
-                        {/* Key Takeaways */}
-                        <div className="text-center space-y-2 hover:text-foreground duration-500 cursor-default">
-                            <h5 className="text-sm md:text-2xl flex items-center md:justify-center">
-                                <Key className="mr-1 size-4 md:size-6" />
-                                Key Takeaways
-                            </h5>
-
-                            <div className="grid md:grid-cols-2 gap-2">
-                                { project.takeaways.map((takeaway) => (
-                                    <InsightCard key={takeaway.title} data={takeaway} />
-                                ))}
-                            </div>
-                        </div>
+                                    <div className="grid md:grid-cols-2 gap-2">
+                                        { project.takeaways?.map((takeaway) => (
+                                            <InsightCard key={takeaway.title} data={takeaway} />
+                                        ))}
+                                    </div>
+                                </div>
+                                </>
+                            )}
                     </div>
                 </ScrollArea>
             </div>
