@@ -13,6 +13,8 @@ import { certificates } from "@/lib/certificates"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import useMobileNavigation from "@/src/hooks/use-mobile-navigation"
+import { ContactProps } from "@/lib/contact"
+import Link from "next/link"
 
 export default function About() {
     const {activeId, itemRefs, scrollToSection} = useActiveSection(sections)
@@ -159,6 +161,21 @@ export default function About() {
                                         </div>
                                     )}
 
+                                    {section.title === "Contact Me" && (
+                                        <div>
+                                            {section.content.map((contact: ContactProps) => (
+                                                <Button 
+                                                    key={contact.platform}
+                                                    variant={'link'}
+                                                >
+                                                    <Link href={contact.link} target="_blank">
+                                                        <i className={`${contact.iconClass} text-2xl`} />
+                                                        {contact.platform}
+                                                    </Link>
+                                                </Button>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             </li>
                         ))}

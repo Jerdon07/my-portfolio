@@ -1,4 +1,5 @@
 import { certificates } from "./certificates";
+import { contact } from "./contact";
 import { myLife } from "./my-life";
 import { skills } from "./tech-stacks";
 import { timelineData } from "./timelines";
@@ -21,5 +22,8 @@ export const sections: ISecction[] = [
     }, {
         title: "Tech Tools",
         content: skills,
-    }, 
+    }, {
+        title: "Contact Me",
+        content: contact
+    }
 ]
