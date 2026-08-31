@@ -107,7 +107,7 @@ export default function About() {
                                         <div className="space-y-4 py-6">
                                             {section.content.map((certificate: CertificateProps) => {
                                                 return (
-                                                    <Item variant="outline">
+                                                    <Item variant="outline" key={certificate.id}>
                                                         <ItemContent>
                                                             <ItemTitle>
                                                                 {certificate.title} 
