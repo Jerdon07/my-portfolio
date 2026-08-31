@@ -1,3 +1,4 @@
+import { certificates } from "./certificates";
 import { myLife } from "./my-life";
 import { skills } from "./tech-stacks";
 import { timelineData } from "./timelines";
@@ -15,7 +16,10 @@ export const sections: ISecction[] = [
         title: "Achievements and Progress",
         content: timelineData,
     }, {
+        title: "Certificates",
+        content: certificates,
+    }, {
         title: "Tech Tools",
         content: skills,
-    }
+    }, 
 ]

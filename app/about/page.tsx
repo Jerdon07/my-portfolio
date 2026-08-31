@@ -1,13 +1,17 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { sections } from "@/lib/about-me-sections"
 import { Badge } from "@/components/ui/badge"
 import { ILife } from "@/lib/my-life"
 import { ITimeline } from "@/lib/timelines"
 import { ISkill } from "@/lib/tech-stacks"
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { CertificateProps } from '@/lib/certificates'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import useActiveSection from "@/src/hooks/use-active-section"
+import { certificates } from "@/lib/certificates"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
 export default function About() {
     const mobileNavRef = useRef<HTMLDivElement>(null)
@@ -19,6 +23,13 @@ export default function About() {
         const activeBtn = mobileNavRef.current.querySelector<HTMLElement>('[data-active="true"]')
         activeBtn?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
     }, [activeId])
+
+    /* Certificate */
+    const [ selectedCertificate, setSelectedCertificate ] = useState<CertificateProps | null>(null)
+    const handleOpenCertificate = (certificateId: number) => {
+        const certificate = certificates.find((cert) => cert.id === certificateId)
+        setSelectedCertificate(certificate ?? null)
+    }
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-12">
@@ -92,6 +103,43 @@ export default function About() {
                                         </ol>
                                     )}
 
+                                    {section.title === 'Certificates' && (
+                                        <div className="space-y-4 py-6">
+                                            {section.content.map((certificate: CertificateProps) => {
+                                                return (
+                                                    <Item variant="outline">
+                                                        <ItemContent>
+                                                            <ItemTitle>
+                                                                {certificate.title} 
+                                                                <Badge variant="outline">
+                                                                    {certificate.abbreviation}
+                                                                </Badge>
+                                                            </ItemTitle>
+                                                            <ItemDescription>{certificate.authority}</ItemDescription>
+                                                        </ItemContent>
+                                                        <ItemActions>
+                                                            <Button variant="link">
+                                                                <a 
+                                                                    href={certificate.url}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    url
+                                                                </a>
+                                                            </Button>
+                                                            <Button 
+                                                                onClick={() => handleOpenCertificate(certificate.id)}
+                                                                variant="secondary"
+                                                            >
+                                                                Certificate
+                                                            </Button>
+                                                        </ItemActions>
+                                                    </Item>
+                                                )
+                                            })}
+                                        </div>
+                                    )}
+
                                     {section.title === 'Tech Tools' && (
                                         <div className="space-y-4 py-6">
                                             {section.content.map((skill: ISkill) => {
@@ -143,6 +191,19 @@ export default function About() {
                     </nav>
                 </aside>
             </div>
+
+            <Dialog 
+                open={!!selectedCertificate}
+                onOpenChange={(open) => !open && setSelectedCertificate(null)}
+            >
+                <DialogContent>
+                    <DialogTitle className="sr-only">
+                        {selectedCertificate?.title}
+                    </DialogTitle>
+                    <img 
+                        src={selectedCertificate?.image} alt="" />
+                </DialogContent>
+            </Dialog>
         </div>
     )
 }
