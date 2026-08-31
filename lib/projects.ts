@@ -38,7 +38,7 @@ export const projects: ProjectProps[] = [
     {
         id: 1,
         title: 'Hrvst',
-        subtitle: 'Connecting Farmers & Dealers through a Real-Time Aggricultural Marketplace.',
+        subtitle: 'Vegetable Scheduling & Analytics for La Trinidad Vegetable Trading Post Farmers & Dealers',
         description: 'A specialized agriculture logistics and marketplace platform designed to streamline crop trading within the Cordillera region. Built to replace volatile, word-of-mouth scheduling, the platform synchronizes trading activities at the La Trinidad Vegetable Trading Post. By providing a symmetrical, single-parent posting system, Hrvst allows both farmers to broadcast upcoming supply and dealers to log current demand, stabilizing local supply chains through data-driven transparency.',
         badge: 'Capstone Project',
         year: 2026,
@@ -208,10 +208,10 @@ export const projects: ProjectProps[] = [
 
     {
         id: 3,
-        title: 'Inventory & Warehouse Management',
-        subtitle: 'A centralized Inventory & Warehouse Management platform for product catalogs, multi-warehouse stock, purchasing, receiving, sales orders, and full audit logging',
+        title: 'Cached',
+        subtitle: 'Centralized Inventory & Warehouse Management platform for 12+ Different Roles',
         description: 'The Inventory & Warehouse Management System (IWMS) is a web-based business management application built to help organizations efficiently manage products, inventory, warehouses, purchasing, receiving, sales, and stock movements from a single platform.',
-        badge: 'Filament & RBAC Project',
+        badge: 'Personal Project',
         year: 2026,
         thumbnail: '/cached.png',
         stack: [
