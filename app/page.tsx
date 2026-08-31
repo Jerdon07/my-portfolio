@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+import { Award } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -72,8 +74,6 @@ export default function Home() {
             />
           </div>
 
-          <div></div>
-
           <div className="flex flex-col gap-1 text-left">
             <p className="text-zinc-200 text-base font-medium">
               Bachelor of Science in Information Technology
@@ -82,6 +82,24 @@ export default function Home() {
               From{" "}
               <span className="text-zinc-300">University of the Cordilleras</span>
               , Baguio City
+            </p>
+          </div>
+        </div>
+
+        {/* Tesda Certificate */}
+        <div className="pl-10 flex items-center gap-4">
+          <div className="w-10 h-10 shrink-0 bg-emerald-900 rounded-full flex items-center justify-center">
+            <Award className="object-contain text-5xl" />
+          </div>
+
+          <div className="flex flex-col gap-1 text-left">
+            <p className="text-zinc-200 text-base font-medium">
+              Web Development NC III
+            </p>
+            
+            <p className="text-zinc-500 text-sm">
+              Technical Education and Skills Development Authority
+                (<Badge className="px-2">TESDA</Badge>)
             </p>
           </div>
         </div>
