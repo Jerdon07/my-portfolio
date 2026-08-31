@@ -1,6 +1,40 @@
-import { Banknote, Cable, CalendarClock, HeartHandshake, Layers, Map, MapPinned, Shrub, Store, Zap } from "lucide-react";
+import { Banknote, BookOpenText, Cable, CalendarClock, ChartLine, FileInput, HeartHandshake, Layers, LucideIcon, LucideProps, Map, MapPinned, Shrub, Store, TrendingUp, UserKey, Warehouse, Zap } from "lucide-react";
 
-export const projects = [
+export interface ProjectProps {
+    id: number
+    title: string
+    subtitle: string
+    description: string
+    badge: string
+    year: number
+    thumbnail: string
+    stack: {
+            name: string
+            color: string
+        }[]
+    mission: string
+    role: string[]
+    timeline: string
+    link?: string
+    github?: string
+    features: {
+        title: string
+        description: string
+        icon: LucideIcon
+    }[]
+    results?: {
+        title: string
+        description: string
+        icon: LucideIcon
+    }[]
+    takeaways?: {
+        title: string
+        description: string
+        icon: LucideIcon
+    }[]
+}
+
+export const projects: ProjectProps[] = [
     {
         id: 1,
         title: 'Hrvst',
@@ -44,7 +78,7 @@ export const projects = [
         ],
         mission: 'To empower the Cordillera agricultural community by replacing unpredictable trading habits with predictive, rolling lifecycle data—ensuring fair market visibility for farmers and reliable sourcing for dealers.',
         role: ['Solo Developer'],
-        timeline: ['6 Months Capstone Project'],
+        timeline: '6 Months Capstone Project',
         link: 'https://hrvst.laravel.cloud',
         github: 'https://github.com/Cresco-Team/Hrvst-v2',
         features: [
@@ -127,7 +161,7 @@ export const projects = [
         ],
         mission: "We connect you with businesses practicing sustainable and eco-friendly practices, help you track your environmental payments, and reward you for making choices that benefit our planet. Together, we're building a community committed to zero-waste living and environmental responsibility.",
         role: ['Quality Assurance Intern'],
-        timeline: ['3 Months Internship Project'],
+        timeline: '3 Months Internship Project',
         link: 'https://mobile.zircuvia.com',
         features: [
             {
@@ -169,6 +203,56 @@ export const projects = [
                 description: 'Implementing automated testing tools and scripts can significantly reduce manual testing time, allowing the QA team to focus on more complex scenarios and edge cases, ultimately improving overall product quality.',
                 icon: Zap
             }
+        ]
+    },
+
+    {
+        id: 3,
+        title: 'Inventory & Warehouse Management',
+        subtitle: 'A centralized Inventory & Warehouse Management platform for product catalogs, multi-warehouse stock, purchasing, receiving, sales orders, and full audit logging',
+        description: 'The Inventory & Warehouse Management System (IWMS) is a web-based business management application built to help organizations efficiently manage products, inventory, warehouses, purchasing, receiving, sales, and stock movements from a single platform.',
+        badge: 'Filament & RBAC Project',
+        year: 2026,
+        thumbnail: '/cached.png',
+        stack: [
+            {
+                name: 'Laravel',
+                color: 'bg-orange-500/50 text-orange-500'
+            }, {
+                name: 'Filament',
+                color: 'bg-orange-400/50 text-orange-400'
+            },
+        ],
+        mission: 'To replace manual processes such as paper records and spreadsheets with a centralized, real-time inventory management solution.',
+        role: ['Solo Developer'],
+        timeline: '4 Months Project',
+        github: 'https://github.com/Jerdon07/cached',
+        features: [
+            {
+                title: '12+ Roles',
+                description: 'Role based application for difference access.',
+                icon: UserKey
+            }, {
+                title: 'Catalog',
+                description: 'Manages products, categories, brands, units.',
+                icon: BookOpenText
+            }, {
+                title: 'Inventory & Warehousing',
+                description: 'Movements, adjustments, transfers, and Multi-location stock tracking.',
+                icon: Warehouse
+            }, {
+                title: 'Purchasing',
+                description: 'Manages orders, approvals, goods receiving.',
+                icon: FileInput
+            }, {
+                title: 'Sales',
+                description: 'Manages Customer orders and fulfillment.',
+                icon: TrendingUp
+            }, {
+                title: 'Reports',
+                description: 'Checks for Valuation, low stock, activity.',
+                icon: ChartLine
+            },
         ]
     }
 ]
