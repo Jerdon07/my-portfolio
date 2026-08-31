@@ -36,6 +36,8 @@ export default function RootLayout({
       className={cn("antialiased", geistSans.variable, geistMono.variable, "font-sans", outfit.variable, geistHeading.variable)}
     >
       <body className="min-h-screen flex flex-col bg-background">
+
+        {/* Header */}
         <header className="h-16 flex items-center justify-between px-6 sm:px-10 border-b border-zinc-800/60">
           <Link
             href="/"
@@ -45,6 +47,8 @@ export default function RootLayout({
           </Link>
           <Navbar />
         </header>
+
+        {/* Main */}
         <main className="flex-1 flex flex-col cursor-default">
           {children}
         </main>
