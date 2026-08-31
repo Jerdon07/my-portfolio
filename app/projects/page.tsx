@@ -1,10 +1,5 @@
-import { Badge } from "@/components/ui/badge"
-import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ProjectProps, projects } from "@/lib/projects"
-import { ArrowRight } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
 import ProjectCard from "./_components/project-card"
+import { ProjectProps, projects } from "@/lib/projects"
 
 export default function Projects() {
 
