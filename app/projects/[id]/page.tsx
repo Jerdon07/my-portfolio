@@ -8,6 +8,7 @@ import { Award, Key, Sparkles, Target, TextAlignStart, Type } from "lucide-react
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import ProjectSidebar from "./_components/project-sidebar"
 
 interface PageProps {
     params: Promise<{
@@ -28,59 +29,12 @@ export default async function Show({ params }: PageProps) {
         <div className="md:mx-12 my-4 font-semibold space-y-6 cursor-default">
             <div className="grid md:grid-cols-3 gap-10">
 
-                {/* Left */}
+                {/* Sidebar */}
                 <div className="col-span-1">
-                    <Card className="pt-0">
-                        <Link href={project.link ?? project.github ?? '#'} target="_blank" className="relative aspect-video overflow-hidden">
-                            <Image src={project.thumbnail} alt={project.title} fill className="grayscale-50 brightness-75 hover:brightness-100 hover:grayscale-0 transition hover:scale-115 ease-in-out duration-800"/>
-                        </Link>
-
-                        <CardHeader>
-                            <CardTitle>
-                                { project.title }
-                            </CardTitle>
-
-                            <CardDescription>
-                            <div className="space-x-2">{ project.stack.map((stack) => (
-                                    <Badge key={stack.name} className={`${stack.color}} text-foreground px-1`}>{ stack.name }</Badge>
-                                )) }</div>
-                            </CardDescription>
-
-                            {project.github && (
-                                <CardAction>
-                                    <Link href={project.github} target="_blank">
-                                        <i className="devicon-github-original white text-2xl" />
-                                    </Link>
-                                </CardAction>
-                            )}
-                        </CardHeader>
-
-                        <CardContent className="space-y-4">
-                            <Separator />
-
-                            <div>
-                                <span className="text-xs italic">Role:</span>
-                                <p>{ project.role }</p>
-                            </div>
-
-                            <div className="flex space-x-4">
-                                <div>
-                                    <span className="text-xs italic">Year:</span>
-                                    <p>{ project.year }</p>
-                                </div>
-
-                                <Separator orientation="vertical" />
-
-                                <div>
-                                    <span className="text-xs italic">Timeline:</span>
-                                    <p>{ project.timeline }</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
+                    <ProjectSidebar project={project} />
                 </div>
 
-                {/* Right */}
+                {/* Main */}
                 <ScrollArea className="md:max-h-[80vh] p-4 border md:col-span-2">
                     <div className="space-y-4 text-foreground/80">
 
