@@ -12,17 +12,11 @@ import useActiveSection from "@/src/hooks/use-active-section"
 import { certificates } from "@/lib/certificates"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import useMobileNavigation from "@/src/hooks/use-mobile-navigation"
 
 export default function About() {
-    const mobileNavRef = useRef<HTMLDivElement>(null)
-
     const {activeId, itemRefs, scrollToSection} = useActiveSection(sections)
-
-    useEffect(() => {
-        if (!mobileNavRef.current) return
-        const activeBtn = mobileNavRef.current.querySelector<HTMLElement>('[data-active="true"]')
-        activeBtn?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
-    }, [activeId])
+    const mobileNav = useMobileNavigation( activeId )
 
     /* Certificate */
     const [ selectedCertificate, setSelectedCertificate ] = useState<CertificateProps | null>(null)
@@ -35,7 +29,7 @@ export default function About() {
         <div className="max-w-5xl mx-auto px-4 py-12">
 
             <div
-                ref={mobileNavRef}
+                ref={mobileNav}
                 className="lg:hidden sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b border-gray-800 mb-8 flex gap-2 overflow-x-auto py-3 px-1"
             >
                 {sections.map((section) => {
