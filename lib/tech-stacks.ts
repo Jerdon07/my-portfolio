@@ -8,6 +8,7 @@ export interface ISkill {
     tools: {
         name: string
         color: string
+        level: "learning" | "proficient" | "advanced"
     }[]
 }
 
@@ -18,17 +19,17 @@ export const skills: ISkill[] = [
         description: "Building structured server-side logic, ensuring data integrity, and applying clean architectural patterns to keep systems maintainable.",
         icon: Server,
         tools: [{
-            name: "Laravel",
-            color: "bg-orange-500/50"
+            name: "Laravel 13",
+            color: "bg-orange-500/50",
+            level: "proficient",
         }, {
-            name: "NextJS",
-            color: "bg-black text-white"
-        }, {
-            name: "PostgreSQL",
-            color: "bg-indigo-500/50"
+            name: "Next JS",
+            color: "bg-black text-white",
+            level: "learning",
         }, {
             name: "Supabase",
-            color: "bg-green-500/50"
+            color: "bg-green-500/50",
+            level: "learning",
         }]
     }, {
         id: 2,
@@ -36,32 +37,25 @@ export const skills: ISkill[] = [
         description: "Developing responsive, component-driven user interfaces and managing application state across single-page architectures.",
         icon: MonitorSmartphone,
         tools: [{
-            name: "Vue",
-            color: "bg-emerald-500/50"
+            name: "Vue 3",
+            color: "bg-emerald-500/50",
+            level: "proficient",
         }, {
-            name: "React",
-            color: "bg-cyan-500/50"
+            name: "React TSX",
+            color: "bg-cyan-500/50",
+            level: "proficient",
         }, {
-            name: "InertiaJS",
-            color: "bg-purple-500/50"
+            name: "Inertia JS",
+            color: "bg-purple-500/50",
+            level: "proficient",
         }, {
             name: "TypeScript",
-            color: "bg-blue-500/50"
+            color: "bg-blue-500/50",
+            level: "proficient",
         }, {
             name: "Tailwind CSS",
-            color: "bg-sky-500/50"
-        }, {
-            name: "Leaflet",
-            color: "bg-lime-500/50"
-        }, {
-            name: "Tanstack Table",
-            color: "bg-yellow-500/50"
-        }, {
-            name: "Chart JS",
-            color: "bg-pink-500/50"
-        }, {
-            name: "Figma",
-            color: "bg-fuchsia-500/50"
+            color: "bg-sky-500/50",
+            level: "proficient",
         }]
     }, {
         id: 3,
@@ -70,25 +64,24 @@ export const skills: ISkill[] = [
         icon: Workflow,
         tools: [{
             name: "Git",
-            color: "bg-black"
+            color: "bg-black",
+            level: "proficient",
         }, {
             name: "Bun",
-            color: "bg-pink-500/50"
+            color: "bg-pink-500/50",
+            level: "learning",
         }, {
             name: "Composer",
-            color: "bg-taupe-500/50"
+            color: "bg-taupe-500/50",
+            level: "proficient",
         }, {
             name: "Postman",
-            color: "bg-amber-500/50"
-        }, {
-            name: "Laravel Herd",
-            color: "bg-red-500/50"
-        }, {
-            name: "DBngin",
-            color: "bg-violet-500/50"
+            color: "bg-amber-500/50",
+            level: "learning",
         }, {
             name: "Pest",
-            color: "bg-teal-500/50"
+            color: "bg-teal-500/50",
+            level: "proficient",
         }]
     }
 ]
