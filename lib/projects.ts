@@ -43,8 +43,8 @@ export const projects: ProjectProps[] = [
         description: 'A specialized agriculture logistics and marketplace platform designed to streamline crop trading within the Cordillera region. Built to replace volatile, word-of-mouth scheduling, the platform synchronizes trading activities at the La Trinidad Vegetable Trading Post. By providing a symmetrical, single-parent posting system, Hrvst allows both farmers to broadcast upcoming supply and dealers to log current demand, stabilizing local supply chains through data-driven transparency.',
         badge: 'Capstone Project',
         year: 2026,
-        thumbnail: '/hrvst/thumbnail.PNG',
-        images: ['/hrvst/1.PNG', '/hrvst/2.PNG', '/hrvst/3.png', '/hrvst/4.png', '/hrvst/5.png'],
+        thumbnail: '/hrvst/thumbnail.png',
+        images: ['/hrvst/1.png', '/hrvst/2.png', '/hrvst/3.png', '/hrvst/4.png', '/hrvst/5.png'],
         stack: [
             {
                 name: 'Laravel',
