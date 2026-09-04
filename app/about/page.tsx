@@ -15,6 +15,8 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import useMobileNavigation from "@/src/hooks/use-mobile-navigation"
 import { ContactProps } from "@/lib/contact"
 import Link from "next/link"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 
 export default function About() {
     const {activeId, itemRefs, scrollToSection} = useActiveSection(sections)
@@ -28,7 +30,7 @@ export default function About() {
     }
 
     return (
-        <div className="max-w-5xl mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto px-4 py-12">
 
             <div
                 ref={mobileNav}
@@ -53,10 +55,10 @@ export default function About() {
                 })}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                 {/* Content */}
-                <div className="col-span-1 lg:col-span-3">
+                <div className="col-span-1 lg:col-span-9">
                     <ol>
                         {sections.map((section) => (
                             <li
@@ -141,21 +143,32 @@ export default function About() {
                                             {section.content.map((skill: ISkill) => {
                                                 const Icon = skill.icon
                                                 return (
-                                                    <Item variant={'muted'} key={skill.title}>
-                                                        <ItemMedia variant={'icon'}>
-                                                            <Icon />
-                                                        </ItemMedia>
+                                                    <Card key={skill.id}>
+                                                        <CardHeader>
+                                                            <CardTitle className="flex items-center gap-3">
+                                                                <Icon className="size-5 shrink-0" />
+                                                                {skill.title}
+                                                            </CardTitle>
+                                                            <CardDescription>{skill.description}</CardDescription>
+                                                        </CardHeader>
 
-                                                        <ItemContent className="overflow-hidden">
-                                                            <ItemTitle>{ skill.title }</ItemTitle>
-                                                            <ItemDescription>{ skill.description }</ItemDescription>
-                                                            <div className="gap-2 w-fill pl-30 flex justify-end flex-wrap">
-                                                                { skill.tools.map((tool) => (
-                                                                    <Badge key={tool.name} className={`px-2 bg-emerald-800 ${ tool.color }`}>{ tool.name }</Badge>
-                                                                )) }
-                                                            </div>
-                                                        </ItemContent>
-                                                    </Item>
+                                                        <CardContent className="flex flex-wrap gap-2">
+                                                            {skill.tools.map((tool) => (
+                                                                <Badge
+                                                                    key={tool.name}
+                                                                    title={tool.level}
+                                                                    className={cn(
+                                                                        tool.color,
+                                                                        "px-2 py-1",
+                                                                        tool.level === "learning" &&
+                                                                            "opacity-45 border border-dashed border-current"
+                                                                    )}
+                                                                >
+                                                                    {tool.name}
+                                                                </Badge>
+                                                            ))}
+                                                        </CardContent>
+                                                    </Card>
                                                 )
                                             })}
                                         </div>
@@ -182,7 +195,7 @@ export default function About() {
                     </ol>
                 </div>
 
-                <aside className="hidden lg:block lg:col-span-1 lg:sticky lg:top-24 pl-6 border-l border-emerald-700">
+                <aside className="hidden lg:block lg:col-span-3 lg:sticky lg:top-24 pl-6 border-l border-emerald-700">
                     <nav className="space-y-1">
                         {sections.map((section) => {
                             const isActive = activeId === section.title
