@@ -1,11 +1,11 @@
 
-export interface ILife {
+export interface GeToKnowMeProps {
     id: number
     title: string
     content: string
 }
 
-export const myLife: ILife[] = [
+export const myLife: GeToKnowMeProps[] = [
         {
             id: 1,
             title: "My Programming Journey",

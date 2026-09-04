@@ -1,12 +1,12 @@
 
-export interface ITimeline {
+export interface TimelineProps {
     id: number
     year: string
     title: string
     content: string
 }
 
-export const timelineData: ITimeline[] = [
+export const timelineData: TimelineProps[] = [
     {
         id: 1,
         year: '2022-2023',

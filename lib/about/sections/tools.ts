@@ -1,6 +1,6 @@
 import { Server, MonitorSmartphone, Workflow, LucideIcon } from "lucide-react"
 
-export interface ISkill {
+export interface ToolProps {
     id: number
     title: string
     description: string
@@ -12,7 +12,7 @@ export interface ISkill {
     }[]
 }
 
-export const skills: ISkill[] = [
+export const tools: ToolProps[] = [
     {
         id: 1,
         title: "Backend & Core Architecture",

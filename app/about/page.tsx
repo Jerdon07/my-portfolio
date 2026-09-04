@@ -1,22 +1,29 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react"
-import { sections } from "@/lib/about-me-sections"
+import { AboutSectionProps, sections } from "@/lib/about"
 import { Badge } from "@/components/ui/badge"
-import { ILife } from "@/lib/my-life"
-import { ITimeline } from "@/lib/timelines"
-import { ISkill } from "@/lib/tech-stacks"
-import { CertificateProps } from '@/lib/certificates'
+import { GeToKnowMeProps } from "@/lib/about/sections/get-to-know-me"
+import { TimelineProps } from "@/lib/about/sections/timeline"
+import { ToolProps } from "@/lib/about/sections/tools"
+import { CertificateProps } from '@/lib/about/sections/certificates'
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import useActiveSection from "@/src/hooks/use-active-section"
-import { certificates } from "@/lib/certificates"
+import { certificates } from "@/lib/about/sections/certificates"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import useMobileNavigation from "@/src/hooks/use-mobile-navigation"
-import { ContactProps } from "@/lib/contact"
+import { ContactProps } from "@/lib/about/sections/contact"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+
+interface AboutProps {
+    sections: {
+        title: string
+        content: any
+    }[]
+}
 
 export default function About() {
     const {activeId, itemRefs, scrollToSection} = useActiveSection(sections)
@@ -36,7 +43,7 @@ export default function About() {
                 ref={mobileNav}
                 className="lg:hidden sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b border-gray-800 mb-8 flex gap-2 overflow-x-auto py-3 px-1"
             >
-                {sections.map((section) => {
+                {sections.map((section: AboutSectionProps) => {
                     const isActive = activeId === section.title
                     return (
                         <button
@@ -73,7 +80,7 @@ export default function About() {
 
                                     {section.title === 'Get to Know Me' && (
                                         <div>
-                                            {section.content.map((life: ILife) => (
+                                            {section.content.map((life: GeToKnowMeProps) => (
                                                 <div key={life.id} className="py-6 space-y-3">
                                                     <h3 className="text-xl sm:text-2xl font-semibold">{life.title}</h3>
                                                     <p className="pl-4 border-l-2">{life.content}</p>
@@ -84,7 +91,7 @@ export default function About() {
 
                                     {section.title === 'Achievements and Progress' && (
                                         <ol className="relative my-6 border-l border-gray-700 ml-4 sm:ml-8 space-y-12">
-                                            {section.content.map((timeline: ITimeline) => (
+                                            {section.content.map((timeline: TimelineProps) => (
                                                 <li key={timeline.id} className="relative pl-8 sm:pl-12 scroll-mt-24">
                                                     <div className="absolute -left-10.5 top-0 flex h-10 w-20 items-center justify-center rounded-full bg-gray-900 border border-gray-700 text-sm">
                                                         {timeline.year}
@@ -140,7 +147,7 @@ export default function About() {
 
                                     {section.title === 'Tech Tools' && (
                                         <div className="space-y-4 py-6">
-                                            {section.content.map((skill: ISkill) => {
+                                            {section.content.map((skill: ToolProps) => {
                                                 const Icon = skill.icon
                                                 return (
                                                     <Card key={skill.id}>
